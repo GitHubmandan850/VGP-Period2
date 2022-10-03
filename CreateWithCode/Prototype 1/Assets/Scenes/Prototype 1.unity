@@ -1062,15 +1062,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1599718544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dcad2b31b1e0c04fa02d49ad2ee1d4a, type: 3}
+  m_Script: {fileID: 11500000, guid: aedd6324fbf02424cbc9109be12f3192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
   turnspeed: 25
   horizontalInput: 0
   forwardInput: 0
-  mainCamera: {fileID: 269128707}
-  hoodCamera: {fileID: 1573656405}
+  Player2Cam: {fileID: 269128707}
+  HoodCamera2: {fileID: 1573656405}
   switchKey: 303
   inputID: 2
 --- !u!54 &1599718546
