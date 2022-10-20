@@ -37,5 +37,10 @@ public class PlayerController : MonoBehaviour
 
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+         speed = 20.0f;
+        }
     }
 }
