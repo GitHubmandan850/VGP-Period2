@@ -42,5 +42,9 @@ public class PlayerController : MonoBehaviour
         {
          speed = 20.0f;
         }
+        if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+         speed = 10.0f;
+        }
     }
 }
