@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject obsticlePrefab;
-    private Vector3 spawnPos = new Vector3(25, 0, 0);
+    private Vector3 spawnPos = new Vector3(25,  6.19f, -6.8f);
 
     private float startDely = 2;
     private float repeatRate = 2;
