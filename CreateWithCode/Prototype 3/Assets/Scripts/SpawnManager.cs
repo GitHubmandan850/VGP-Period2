@@ -9,11 +9,13 @@ public class SpawnManager : MonoBehaviour
 
     private float startDely = 2;
     private float repeatRate = 2;
+    private PlayerController playerControllerScript;
 
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnObsticle", startDely, repeatRate);
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,10 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnObsticle()
     {
-        Instantiate(obsticlePrefab, spawnPos, obsticlePrefab.transform.rotation);
+        if (playerControllerScript.gameOver == false)
+        {
+            Instantiate(obsticlePrefab, spawnPos, obsticlePrefab.transform.rotation);
+        }
+        
     }
 }
