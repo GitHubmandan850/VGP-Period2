@@ -11,6 +11,8 @@ public float gravityMultiplyer = 1;
 public bool IsOnGround = true;
 public bool gameOver = false;
 
+private Animator playerAnim;
+
 private Rigidbody playerRb;
 
 
@@ -18,16 +20,18 @@ private Rigidbody playerRb;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        playerAnim = GetComponent<Animator>();
         Physics.gravity *= gravityMultiplyer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && IsOnGround)
+        if (Input.GetKeyDown(KeyCode.Space) && IsOnGround && !gameOver)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             IsOnGround = false;
+            playerAnim.SetTrigger("Jump_trig");
         }
     }
 
@@ -40,6 +44,8 @@ private Rigidbody playerRb;
         {
             Debug.Log("Game Over Nerd");
             gameOver = true;
+            playerAnim.SetBool("Death_b", true);
+            playerAnim.SetInteger("DeathType_int", 1);
         }
     }
 }

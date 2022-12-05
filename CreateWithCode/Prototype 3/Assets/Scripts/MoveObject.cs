@@ -20,7 +20,7 @@ public class MoveObject : MonoBehaviour
     {
         if (playerControllerScript.gameOver == false)
         {
-            transform.Translate(Vector3.left * Time.deltaTime * speed);    
+            transform.Translate(Vector3.left * Time.deltaTime * speed);
         }
 
         if(transform.position.x < leftBound && gameObject.CompareTag("Obsticle"))
