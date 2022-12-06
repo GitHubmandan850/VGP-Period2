@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class ChaserController : MonoBehaviour
 {
 
 [Header("Speed & Stuff")]
@@ -27,7 +27,7 @@ private Rigidbody playerRb;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && IsOnGround && !gameOver)
+        if (Input.GetKeyDown(KeyCode.Space) && IsOnGround)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             IsOnGround = false;
@@ -40,12 +40,6 @@ private Rigidbody playerRb;
         if(collision.gameObject.CompareTag("Ground"))
         {
             IsOnGround = true;
-        }else if(collision.gameObject.CompareTag("Obsticle"))
-        {
-            Debug.Log("Game Over They Stole You're Liver");
-            gameOver = true;
-            playerAnim.SetBool("Death_b", true);
-            playerAnim.SetInteger("DeathType_int", 1);
         }
     }
 }

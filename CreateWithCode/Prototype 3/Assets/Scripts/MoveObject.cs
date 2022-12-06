@@ -7,7 +7,7 @@ public class MoveObject : MonoBehaviour
 
     public float speed = 10;
     private PlayerController playerControllerScript;
-    private float leftBound = -15;
+    private float leftBound = -20;
 
     // Start is called before the first frame update
     void Start()
