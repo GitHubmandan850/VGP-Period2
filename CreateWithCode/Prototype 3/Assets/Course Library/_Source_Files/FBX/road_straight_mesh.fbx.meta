@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a1c3c31ad20ee24c837e6aad1e22d80
+guid: 9054c70a5c9ed454f8ef48a11963db28
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -17,14 +17,20 @@ ModelImporter:
     second: //RootNode
   - first:
       43: 4300000
-    second: SM_Prop_Crate_01
+    second: road_straight_mesh
   - first:
-      95: 9500000
+      43: 4300002
+    second: Road_straight_mesh
+  - first:
+      43: 4300004
+    second: road_square_mesh
+  - first:
+      111: 11100000
     second: //RootNode
   externalObjects: {}
   materials:
     materialImportMode: 0
-    materialName: 0
+    materialName: 3
     materialSearch: 1
     materialLocation: 0
   animations:
@@ -52,13 +58,13 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 0
-    importBlendShapes: 0
+    importBlendShapes: 1
     importCameras: 0
     importLights: 0
     fileIdsGeneration: 1
@@ -81,9 +87,9 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
-    normalSmoothAngle: 5
+    normalSmoothAngle: 10
     normalImportMode: 1
     tangentImportMode: 1
     normalCalculationMode: 0
@@ -91,7 +97,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -103,7 +109,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 100
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -114,7 +120,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
-  additionalBone: 0
+  additionalBone: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
