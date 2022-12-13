@@ -8,12 +8,17 @@ public class PlayerController : MonoBehaviour
 [Header("Speed & Stuff")]
 public float jumpForce = 100;
 public float gravityMultiplyer = 1;
+public float dbForce = 200;
+[Header("Particals & audio")]
 public ParticleSystem explotionParticle;
 public ParticleSystem runningDirt;
 public AudioClip jumpSound;
 public AudioClip deathSound;
+[Header("Bools")]
 public bool IsOnGround = true;
 public bool gameOver = false;
+public bool inAir = false;
+public bool hasDbJumped = false;
 
 private Animator playerAnim;
 private AudioSource playerAudio;
@@ -39,6 +44,18 @@ private Rigidbody playerRb;
             playerAnim.SetTrigger("Jump_trig");
             runningDirt.Stop();
             playerAudio.PlayOneShot(jumpSound, 1.0f);
+            inAir = true;
+            hasDbJumped = true;
+        }else if(Input.GetKeyDown(KeyCode.Space) && inAir && hasDbJumped)
+        {
+            playerRb.AddForce(Vector3.up * dbForce, ForceMode.Impulse);
+            hasDbJumped = false;
+            IsOnGround = false;
+            playerAudio.PlayOneShot(jumpSound, 1.0f);
+            runningDirt.Stop();
+        }else if(hasDbJumped == false)
+        {
+           
         }
     }
 
@@ -46,6 +63,8 @@ private Rigidbody playerRb;
     {
         if(collision.gameObject.CompareTag("Ground"))
         {
+            inAir = false;
+            hasDbJumped = false;
             IsOnGround = true;
             runningDirt.Play();
         }else if(collision.gameObject.CompareTag("Obsticle"))
