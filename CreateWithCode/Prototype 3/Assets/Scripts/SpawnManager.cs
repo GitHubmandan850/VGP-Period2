@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class SpawnManager : MonoBehaviour
     private float startDely = 2;
     private float repeatRate = 2;
     private PlayerController playerControllerScript;
+
+    [SerializeField]
+    Text scoreText;
+
+    public int TotalScore;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +27,8 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        TotalScore = obsticlePrefabs.GetInt("Score", 0);
+        scoreText.Text = "Score" + TotalScore.ToString();
     }
 
     void SpawnObsticle()

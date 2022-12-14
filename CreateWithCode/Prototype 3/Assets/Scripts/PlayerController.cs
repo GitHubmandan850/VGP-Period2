@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public bool IsOnGround = true;
 public bool gameOver = false;
 public bool inAir = false;
 public bool hasDbJumped = false;
+[Header("Ints")]
 
 private Animator playerAnim;
 private AudioSource playerAudio;
