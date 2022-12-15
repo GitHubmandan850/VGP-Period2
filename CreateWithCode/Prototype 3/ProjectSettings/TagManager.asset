@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - Obsticle
   - ScoreCounter
+  - Money
+  - Bomb
+  - Background
+  - Floor
   layers:
   - Default
   - TransparentFX

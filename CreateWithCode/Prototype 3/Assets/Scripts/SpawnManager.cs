@@ -12,23 +12,11 @@ public class SpawnManager : MonoBehaviour
     private float repeatRate = 2;
     private PlayerController playerControllerScript;
 
-    [SerializeField]
-    Text scoreText;
-
-    public int TotalScore;
-
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnObsticle", startDely, repeatRate);
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        TotalScore = obsticlePrefabs.GetInt("Score", 0);
-        scoreText.Text = "Score" + TotalScore.ToString();
     }
 
     void SpawnObsticle()
