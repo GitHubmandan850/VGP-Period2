@@ -62,7 +62,7 @@ public class PlayerControllerX : MonoBehaviour
 
         if(other.gameObject.CompareTag("Floor"))
         {
-            playerRb.AddForce(Vector3.up * 10, ForceMode.Impulse);
+            playerRb.AddForce(Vector3.up * 5, ForceMode.Impulse);
         }
 
     }

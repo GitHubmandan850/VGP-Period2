@@ -6,10 +6,18 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public Transform player;
+
+    public GameObject Exit;
+
     public float speed = 5.0f;
     public float horizontalInput;
     public float forwardInput;
+
+    public bool gameOver;
+    
     public Camera mainCamera;
+
     public string inputID; 
  
     // Start is called before the first frame update
@@ -34,6 +42,25 @@ public class Movement : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.LeftShift))
         {
          speed = 5.0f;
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.CompareTag("heal"))
+        {
+            Destroy(other.gameObject);
+        }
+
+        if(other.gameObject.CompareTag("badGuy"))
+        {
+            Destroy(player.gameObject);
+            speed = 0;
+            gameOver = true;
+        }
+        if(other.gameObject.CompareTag("Portal"))
+        {
+            transform.position = Exit.transform.position;
         }
     }
 }
