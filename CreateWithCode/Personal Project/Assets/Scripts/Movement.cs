@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     public float forwardInput;
 
     public bool gameOver;
+    public bool inPortal;
     
     public Camera mainCamera;
 
@@ -58,9 +59,21 @@ public class Movement : MonoBehaviour
             speed = 0;
             gameOver = true;
         }
-        if(other.gameObject.CompareTag("Portal"))
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(inPortal == false)
         {
-            transform.position = Exit.transform.position;
+            if(other.gameObject.CompareTag("Portal"))
+            {
+                transform.position = Exit.transform.position;
+                inPortal = true;
+            }
         }
+        
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        inPortal = false;
     }
 }
