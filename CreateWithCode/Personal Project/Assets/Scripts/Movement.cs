@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
 
     public GameObject Exit;
 
+    public float health = 100;
     public float speed = 5.0f;
     public float horizontalInput;
     public float forwardInput;
@@ -51,9 +52,18 @@ public class Movement : MonoBehaviour
         if(other.gameObject.CompareTag("heal"))
         {
             Destroy(other.gameObject);
+            health = health + 50;
+        }
+        else if(health > 100)
+        {
+         
         }
 
         if(other.gameObject.CompareTag("badGuy"))
+        {
+            health = health - 5;
+        }
+        if(health == 0)
         {
             Destroy(player.gameObject);
             speed = 0;
