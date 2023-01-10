@@ -20,4 +20,12 @@ public class BadGuy : MonoBehaviour
     {
         enemyRb.AddForce((player.transform.position - transform.position).normalized * speed);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Sword"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

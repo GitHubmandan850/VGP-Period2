@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     public float speed = 5.0f;
     public float horizontalInput;
     public float forwardInput;
+    private float healthCube = 50;
 
     public bool gameOver;
     public bool inPortal;
@@ -25,7 +26,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Player = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -45,6 +46,13 @@ public class Movement : MonoBehaviour
         {
          speed = 5.0f;
         }
+
+        health = Mathf.Clamp(health, 0, 100);
+
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -52,16 +60,12 @@ public class Movement : MonoBehaviour
         if(other.gameObject.CompareTag("heal"))
         {
             Destroy(other.gameObject);
-            health = health + 50;
-        }
-        else if(health > 100)
-        {
-         
+            health = health + healthCube;
         }
 
         if(other.gameObject.CompareTag("badGuy"))
         {
-            health = health - 5;
+            health = health -= 5;
         }
         if(health == 0)
         {
