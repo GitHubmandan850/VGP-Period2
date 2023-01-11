@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
 
     public GameObject Exit;
 
+    private Animator playerAnim;
+
     public float health = 100;
     public float speed = 5.0f;
     public float horizontalInput;
@@ -26,7 +28,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player = GetComponent<Animator>();
+        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -51,7 +53,11 @@ public class Movement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-
+            playerAnim.SetBool("Swing_b", true);
+        }
+        if(Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            playerAnim.SetBool("Swing_b", false);
         }
     }
 
