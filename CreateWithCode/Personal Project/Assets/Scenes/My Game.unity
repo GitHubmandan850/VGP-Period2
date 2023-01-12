@@ -2072,6 +2072,8 @@ GameObject:
   - component: {fileID: 1980618954}
   - component: {fileID: 1980618959}
   - component: {fileID: 1980618958}
+  - component: {fileID: 1980618960}
+  - component: {fileID: 1980618961}
   m_Layer: 0
   m_Name: BadGuy
   m_TagString: badGuy
@@ -2184,6 +2186,47 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &1980618960
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980618953}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 19b613a7b87519d4cb91dcfb6a185f1b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1980618961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980618953}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e17ada6c0565134a9072e3cdf3dedc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  Exit: {fileID: 0}
+  health: 100
+  speed: 5
+  horizontalInput: 0
+  forwardInput: 0
+  gameOver: 0
+  inPortal: 0
+  mainCamera: {fileID: 0}
+  inputID: 
 --- !u!1 &2027272972
 GameObject:
   m_ObjectHideFlags: 0

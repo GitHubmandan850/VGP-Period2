@@ -42,11 +42,13 @@ public class Movement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-         speed = 10.0f;
+            speed = 10.0f;
+            playerAnim.SetBool("Running", true);
         }
         if(Input.GetKeyUp(KeyCode.LeftShift))
         {
          speed = 5.0f;
+         playerAnim.SetBool("Running", false);
         }
 
         health = Mathf.Clamp(health, 0, 100);
@@ -71,7 +73,7 @@ public class Movement : MonoBehaviour
 
         if(other.gameObject.CompareTag("badGuy"))
         {
-            health = health -= 5;
+            health = health -= 50;
         }
         if(health == 0)
         {

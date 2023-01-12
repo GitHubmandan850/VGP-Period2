@@ -5,14 +5,18 @@ using UnityEngine;
 public class BadGuy : MonoBehaviour
 {
     public float speed;
+    
     private Rigidbody enemyRb;
     private GameObject player;
+    private Animator playerAnim;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
+        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,5 +31,6 @@ public class BadGuy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
 }
