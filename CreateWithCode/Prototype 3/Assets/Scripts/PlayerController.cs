@@ -77,7 +77,7 @@ private Rigidbody playerRb;
             playerAnim.SetInteger("DeathType_int", 1);
             explotionParticle.Play();
             runningDirt.Stop();
-            playerAudio.PlayOneShot(deathSound, 1.0f);
+            playerAudio.PlayOneShot(deathSound);
         }
         
     }
