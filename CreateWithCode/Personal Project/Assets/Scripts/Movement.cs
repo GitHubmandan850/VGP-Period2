@@ -75,7 +75,7 @@ public class Movement : MonoBehaviour
         {
             health = health -= 50;
         }
-        if(health == 0)
+        if(health < 0)
         {
             Destroy(player.gameObject);
             speed = 0;
