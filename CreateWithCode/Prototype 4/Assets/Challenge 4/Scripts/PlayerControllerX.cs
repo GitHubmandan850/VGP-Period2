@@ -12,6 +12,8 @@ public class PlayerControllerX : MonoBehaviour
     public GameObject powerupIndicator;
     public int powerUpDuration = 5;
 
+    public ParticleSystem Smoke;
+
     private float normalStrength = 10; // how hard to hit enemy without powerup
     private float powerupStrength = 25; // how hard to hit enemy with powerup
     
@@ -29,6 +31,17 @@ public class PlayerControllerX : MonoBehaviour
 
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            speed = 800;
+            Smoke.Play();
+        }
+        if(Input.GetKeyUp(KeyCode.Space))
+        {
+            speed = 500;
+            Smoke.Stop();
+        }
 
     }
 
