@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyX : MonoBehaviour
 {
-    public float speed;
+    SpawnManagerX SpawnManager;
     private Rigidbody enemyRb;
     public GameObject playerGoal;
 
@@ -12,6 +12,7 @@ public class EnemyX : MonoBehaviour
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
+        SpawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManagerX>();
     }
 
     // Update is called once per frame
@@ -20,7 +21,7 @@ public class EnemyX : MonoBehaviour
         // Set enemy direction towards player goal and move there
         Vector3 lookDirection = (playerGoal.transform.position - transform.position).normalized;
 
-        enemyRb.AddForce(lookDirection * speed);
+        enemyRb.AddForce(lookDirection * SpawnManager.EnemySpeed);
     }
 
     private void OnCollisionEnter(Collision other)
