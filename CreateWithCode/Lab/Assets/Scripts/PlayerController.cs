@@ -4,21 +4,54 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 0;
-    private Rigidbody playerRb;
-    // Start is called before the first frame update
-    void Start()
+    public float moveSpeed;
+
+    public Transform orientation;
+
+    private Animator Door;
+
+    float horizontalInput;
+    float verticalInput;
+
+    private Rigidbody rb;
+
+    Vector3 moveDirection;
+
+    private void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        Door = GetComponent<Animator>();
+        rb.freezeRotation = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        MyInput(); 
+    }
 
-        playerRb.AddForce(Vector3.forward * speed * verticalInput);
-        playerRb.AddForce(Vector3.right * speed * horizontalInput);
+    private void FixedUpdate()
+    {
+        MovePlayer();
+    }
+
+    private void MyInput()
+    {
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
+    }
+
+    private void MovePlayer()
+    {
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
+        rb.AddForce(moveDirection.normalized * moveSpeed * 1f, ForceMode.Force);
+    }
+
+    private void OnTriggerEnter()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            Door.SetTrigger("Opened?");
+        }
     }
 }
