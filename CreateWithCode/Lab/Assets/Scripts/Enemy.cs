@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     {
        if(collision.gameObject.CompareTag("Walls"))
        {
-            Destroy(GameObject);
+            Destroy(gameObject);
        }
     }
 }
