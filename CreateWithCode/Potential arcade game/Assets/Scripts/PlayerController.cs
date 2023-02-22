@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject player;
+    public GameObject Gun;
     public float health = 100;
     public float speed = 5.0f;
     private float horizontalInput;
@@ -47,6 +48,17 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(player.gameObject);
             speed = 0;
+        }
+
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Gun"))
+        {
+            Destroy(other.gameObject);
+            Gun.SetActive(true);
         }
     }
 }
