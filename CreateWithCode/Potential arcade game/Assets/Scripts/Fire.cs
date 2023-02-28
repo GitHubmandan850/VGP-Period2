@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pistol : MonoBehaviour
+public class Fire : MonoBehaviour
 {
     public GameObject Bulletprefab;
     public float Bulletspeed = 10f;
+
+    void Start()
+    {
+
+    }
 
     // Update is called once per frame
     void Update()
