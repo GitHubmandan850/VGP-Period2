@@ -10,35 +10,46 @@ public class RocketBehavior : MonoBehaviour
     private float rocketStrength = 15.0f;
     private float aliveTimer = 5.0f;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if(homing && target != null)
+        if (other.CompareTag("Powerup"))
         {
-           Vector3 moveDirection = (target.transform.position -
-           transform.position).normalized;
-           transform.position += moveDirection * speed * Time.deltaTime;
-           transform.LookAt(target);
+            hasPowerup = true;
+            currentPowerUp = other.gameObject.GetComponent<PowerUp>().powerUpType;
+            powerupIndicator.gameObject.SetActive(true);
+            Destroy(other.gameObject);
+            if(powerupCountdown != null)
+            {
+                StopCoroutine(powerupCountdown);
+            }
+            powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
         }
     }
 
-    public void Fire(Transform newTarget)
+    IEnumerator PowerupCountdownRoutine()
     {
-        homing = true;
-        Destroy(gameObject, aliveTimer);
+        yield return new WaitForSeconds(7);
+        hasPowerup = false;
+        currentPowerUp = PowerUpType.None;
+        powerupIndicator.gameObject.SetActive(false);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") && currentPowerUp == PowerUpType.Pushback)
+        {
+            Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            Vector3 awayFromPlayer = collision.gameObject.transform.position - transform.position;
+            enemyRigidbody.AddForce(awayFromPlayer * powerUpStrength, ForceMode.Impulse);
+            Debug.Log("Player collided with: " + collision.gameObject.name + " with powerup set to " + currentPowerUp.ToString());
+        }
     }
 
-    void OnCollisionEnter(Collision col)
+    void LaunchRockets()
     {
-       if (target != null)
-       {
-            if (col.gameObject.CompareTag(target.tag))
-            {
-                Rigidbody targetRigidbody = col.gameObject.GetComponent<Rigidbody>();
-                Vector3 away = -col.contacts[0].normal;
-                targetRigidbody.AddForce(away * rocketStrength, ForceMode.Impulse);
-                Destroy(gameObject);
-            }
-       }
+        foreach(var enemy in FindObjectsOfType<Enemy>())
+        {
+            tmpRocket = Instantiate(rocketPrefab, transform.position + Vector3.up, Quaternion.identity);
+            tmpRocket.GetComponent<RocketBehaviour>().Fire(enemy.transform);
+        }
     }
 }
