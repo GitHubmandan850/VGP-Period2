@@ -27,9 +27,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float ForwardInput = Input.GetAxis("Vertical");
-        
-        playerRb.AddForce(focalPoint.transform.forward * speed * ForwardInput);
+
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
+
+        playerRb.AddForce(focalPoint.transform.forward * speed * ForwardInput);
     
         if (currentPowerUp == PowerUpType.Rockets && Input.GetKeyDown(KeyCode.F))
         {
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
         {
             hasPowerup = true;
             currentPowerUp = other.gameObject.GetComponent<PowerUp>().powerUpType;
+            powerupIndicator.gameObject.SetActive(true);
             Destroy(other.gameObject);
             if(powerupCountdown != null)
             {
@@ -76,9 +78,8 @@ public class PlayerController : MonoBehaviour
     {
         foreach(var enemy in FindObjectsOfType<Enemy>())
         {
-            tmpRocket = Instantiate(rocketPrefab, transform.position + Vector3.up,
-            Quaternion.identity);
-            tmpRocket.GetComponent<RocketBehavior>().Fire(enemy.transform);
+            tmpRocket = Instantiate(rocketPrefab, transform.position + Vector3.up, Quaternion.identity);
+            tmpRocket.GetComponent<RocketBehaviour>().Fire(enemy.transform);
         }
     }
 }
