@@ -6,6 +6,7 @@ TagManager:
   tags:
   - stopPoint
   - Gun
+  - Bullet
   layers:
   - Default
   - TransparentFX

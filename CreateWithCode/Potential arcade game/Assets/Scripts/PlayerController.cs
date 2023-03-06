@@ -49,15 +49,12 @@ public class PlayerController : MonoBehaviour
             Destroy(player.gameObject);
             speed = 0;
         }
-
-        
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collider other)
     {
         if(other.CompareTag("Gun"))
         {
-            Destroy(other.gameObject);
             Gun.SetActive(true);
         }
     }
