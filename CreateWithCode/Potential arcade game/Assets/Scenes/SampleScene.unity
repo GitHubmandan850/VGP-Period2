@@ -1127,7 +1127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1940829516622264465, guid: 9bd973b5f1a2aec4d935ab05601a9544, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3926445006987207325, guid: 9bd973b5f1a2aec4d935ab05601a9544, type: 3}
       propertyPath: m_RootOrder
@@ -1230,7 +1230,6 @@ GameObject:
   - component: {fileID: 1239861536}
   - component: {fileID: 1239861535}
   - component: {fileID: 1239861534}
-  - component: {fileID: 1239861533}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1238,19 +1237,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1239861533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1239861532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b6260c689fe23b4eb75b631470d66f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Enemyman: {fileID: 1239861532}
 --- !u!136 &1239861534
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1321,7 +1307,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239861532}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
   m_LocalPosition: {x: -3.67, y: 1, z: 0.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
