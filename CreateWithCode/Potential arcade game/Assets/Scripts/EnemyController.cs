@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-
-    public GameObject Enemyman;
-
-    private void OnCollisionEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if(other.CompareTag("Bullet"))
+        if(gameObject.CompareTag("Bullet"))
         {
-            Destroy(Enemyman);
+            Destroy(gameObject);
         }
     }
 }
