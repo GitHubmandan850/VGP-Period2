@@ -29,6 +29,7 @@ public class PistolController : MonoBehaviour
         if(ammo == 0f)
         {
             canShoot = false;
+            PistolAnim.SetBool("Empty", true);
         }
         if (Input.GetKeyDown(KeyCode.Space) && canShoot)
         {
@@ -37,7 +38,7 @@ public class PistolController : MonoBehaviour
             bullet.GetComponent<Rigidbody>().AddForce(transform.right * Bulletspeed);
             Destroy(bullet, timeDestroy);
             GameObject casing = Instantiate(Casingprefab, CasingPoint.transform.position, Quaternion.identity) as GameObject;
-            casing.GetComponent<Rigidbody>().AddForce(transform.forward * Bulletspeed);
+            casing.GetComponent<Rigidbody>().AddForce(Vector3.down * Bulletspeed);
             Destroy(casing, 2f);
             ammo -= 1;
         }
@@ -45,6 +46,7 @@ public class PistolController : MonoBehaviour
         {
             ammo = 10;
             canShoot = true;
+            PistolAnim.SetBool("Empty", false);
         }
     }
 }
