@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - stopPoint
   - Gun
   - Bullet
+  - Guy
   layers:
   - Default
   - TransparentFX

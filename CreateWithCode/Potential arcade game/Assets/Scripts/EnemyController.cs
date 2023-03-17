@@ -7,11 +7,11 @@ public class EnemyController : MonoBehaviour
     public float speed;
     private Rigidbody enemyRb;
     public GameObject player;
+    public float health = 20f;
 
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
-        player = GameObject.Find("Player");
     }
 
     void Update()
@@ -19,13 +19,17 @@ public class EnemyController : MonoBehaviour
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
 
         enemyRb.AddForce(lookDirection * speed);
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if(gameObject.CompareTag("Bullet"))
+        
+        if(health < 0f)
         {
             Destroy(gameObject);
+        }
+    }
+    private void OnCollisionEnter(Collider other)
+    {
+        if(other.CompareTag("Bullet"))
+        {
+            health -= 5;
         }
     }
 }

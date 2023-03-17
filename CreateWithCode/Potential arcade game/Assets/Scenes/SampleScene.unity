@@ -708,7 +708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165940450}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.554, y: -0.03, z: -0.17}
+  m_LocalPosition: {x: 0.491, y: -0.03, z: -0.029}
   m_LocalScale: {x: 1.7963921, y: 7.530865, z: 5.9305406}
   m_Children: []
   m_Father: {fileID: 550643970}
@@ -1640,7 +1640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &643913692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1655,6 +1655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   player: {fileID: 1187373042}
+  health: 20
 --- !u!136 &643913693
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2959,7 +2960,7 @@ GameObject:
   - component: {fileID: 1187373043}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3228,7 +3229,7 @@ GameObject:
   - component: {fileID: 1239861538}
   m_Layer: 0
   m_Name: BadGuy
-  m_TagString: Untagged
+  m_TagString: Guy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3246,7 +3247,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  player: {fileID: 1187373042}
+  player: {fileID: 624348532}
+  health: 20
 --- !u!136 &1239861534
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3343,7 +3345,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 48
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!1 &1252290794
 GameObject:
