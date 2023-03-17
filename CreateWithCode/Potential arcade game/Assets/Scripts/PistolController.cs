@@ -11,6 +11,7 @@ public class PistolController : MonoBehaviour
     public GameObject FirePoint;
     public GameObject CasingPoint;
     public float Bulletspeed = 10f;
+    public float Casingspeed = 100f;
     public float timeDestroy = 5f;
     public float ammo = 10;
     private bool canShoot = true;
@@ -38,7 +39,7 @@ public class PistolController : MonoBehaviour
             bullet.GetComponent<Rigidbody>().AddForce(transform.right * Bulletspeed);
             Destroy(bullet, timeDestroy);
             GameObject casing = Instantiate(Casingprefab, CasingPoint.transform.position, Quaternion.identity) as GameObject;
-            casing.GetComponent<Rigidbody>().AddForce(Vector3.down * Bulletspeed);
+            casing.GetComponent<Rigidbody>().AddForce(Vector3.down * Casingspeed);
             Destroy(casing, 2f);
             ammo -= 1;
         }
@@ -47,6 +48,10 @@ public class PistolController : MonoBehaviour
             ammo = 10;
             canShoot = true;
             PistolAnim.SetBool("Empty", false);
+            PistolAnim.SetBool("Reloading", true);
+        }else
+        {
+            PistolAnim.SetBool("Reloading", false);
         }
     }
 }
