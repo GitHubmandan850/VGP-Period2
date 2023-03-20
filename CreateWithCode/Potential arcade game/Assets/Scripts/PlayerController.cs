@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject player;
+    private Rigidbody Rb;
     public GameObject Gun;
     public float health = 100;
     public float speed = 5.0f;
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+    
     }
 
     // Update is called once per frame
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            speed = 8.0f;
+            
         }
         if(Input.GetKeyUp(KeyCode.LeftShift))
         {
@@ -48,14 +49,6 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(player.gameObject);
             speed = 0;
-        }
-    }
-
-    private void OnCollisionEnter(Collider other)
-    {
-        if(other.CompareTag("Gun"))
-        {
-            Gun.SetActive(true);
         }
     }
 }
