@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f;
     private float horizontalInput;
     private float forwardInput;
+    public GameManager gamemanager;
     
     private string inputID; 
  
@@ -33,11 +34,19 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            
+            speed = 8f;
         }
         if(Input.GetKeyUp(KeyCode.LeftShift))
         {
          speed = 5.0f;
+        }
+        if(gamemanager.isGameActive = false)
+        {
+            speed = 0;
+        }
+        if(gamemanager.isGameActive = true)
+        {
+            speed = 5;
         }
 
         health = Mathf.Clamp(health, 0, 100);
@@ -49,6 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(player.gameObject);
             speed = 0;
+            gamemanager.isGameActive = false;
         }
     }
 }
