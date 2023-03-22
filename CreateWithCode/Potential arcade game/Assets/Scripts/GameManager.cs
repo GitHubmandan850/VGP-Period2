@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Image Blur;
     public bool isGameActive;
     public TextMeshProUGUI gamerOverText;
+    public PlayerController playercontroller;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
         Titletext.gameObject.SetActive(false);
         StartButton.gameObject.SetActive(false);
+        playercontroller.speed = 5.0f;
     }
     
     public void GameOver()

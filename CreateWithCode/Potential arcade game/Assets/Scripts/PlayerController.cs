@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody Rb;
     public GameObject Gun;
     public float health = 100;
-    public float speed = 5.0f;
+    public float speed = 0f;
     private float horizontalInput;
     private float forwardInput;
     public GameManager gamemanager;
@@ -39,14 +39,6 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.LeftShift))
         {
          speed = 5.0f;
-        }
-        if(gamemanager.isGameActive = false)
-        {
-            speed = 0;
-        }
-        if(gamemanager.isGameActive = true)
-        {
-            speed = 5;
         }
 
         health = Mathf.Clamp(health, 0, 100);
