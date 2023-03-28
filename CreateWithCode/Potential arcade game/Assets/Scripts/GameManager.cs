@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public bool isGameActive;
     public TextMeshProUGUI gamerOverText;
     public PlayerController playercontroller;
+    public GameObject Body;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         Titletext.gameObject.SetActive(true);
         StartButton.gameObject.SetActive(true);
+        Body.GetComponent<LookAtMouse>().enabled = false;
     }
 
     public void StartGame()
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
         Titletext.gameObject.SetActive(false);
         StartButton.gameObject.SetActive(false);
         playercontroller.speed = 5.0f;
+        Body.GetComponent<LookAtMouse>().enabled = true;
     }
     
     public void GameOver()
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         gamerOverText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
+        Body.GetComponent<LookAtMouse>().enabled = false;
     }
 
     public void RestartGame()

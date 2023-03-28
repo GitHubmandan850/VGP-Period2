@@ -8,6 +8,7 @@ public class ZoomTrig : MonoBehaviour
     public MeshRenderer renderer;
     public BoxCollider trig;
     public BoxCollider colider;
+    public float zoom;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class ZoomTrig : MonoBehaviour
         {
             colider.enabled = true;
             renderer.enabled = true;
-            camera.orthographicSize = 6.0f;
+            camera.orthographicSize = zoom;
 
         }
     }

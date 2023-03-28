@@ -5,27 +5,28 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float health = 20f;
-    public float speed;
-    private Rigidbody enemyRb;
-    public GameObject player;
     public GameManager gameManager;
+    public ParticleSystem hit;
+    public Transform Playerpos;
+    private rigidbody rb;
+
+    UnityEngine.AI.NavMeshAgent agent;
 
     void Start()
     {
-        enemyRb = GetComponent<Rigidbody>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-        enemyRb.AddForce(lookDirection * speed);
+        agent.destination = Playerpos.position;
+        hit.transform.position = transform.position;
+        Vector3 lookDirection = (Playerpos.transform.position - transform.position).normalized;
+
         if(health < 0f)
         {
-            Destroy(gameObject);
-        }
-        if(gameManager.isGameActive = false)
-        {
-            speed = 0;
+            rb.constraints = RigidbodyConstraints.None;
         }
     }
     void OnTriggerEnter(Collider other)
@@ -33,6 +34,7 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             health -= 5;
+            hit.Play();
         }
     }
 }
