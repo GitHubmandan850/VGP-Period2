@@ -7,8 +7,10 @@ public class ZoomTrig : MonoBehaviour
     public Camera camera;
     public MeshRenderer renderer;
     public BoxCollider trig;
+    public List<GameObject> targets;
     public BoxCollider colider;
     public float zoom;
+    public EnemyController badman;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,7 @@ public class ZoomTrig : MonoBehaviour
             colider.enabled = true;
             renderer.enabled = true;
             camera.orthographicSize = zoom;
-
+            badman.isAlive = true;
         }
     }
 }

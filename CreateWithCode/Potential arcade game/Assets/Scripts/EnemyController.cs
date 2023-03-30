@@ -8,7 +8,10 @@ public class EnemyController : MonoBehaviour
     public GameManager gameManager;
     public ParticleSystem hit;
     public Transform Playerpos;
-    private rigidbody rb;
+    private Rigidbody rb;
+    public GameObject damaged;
+    public GameObject Normal;
+    public bool isAlive = false;
 
     UnityEngine.AI.NavMeshAgent agent;
 
@@ -20,14 +23,25 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        agent.destination = Playerpos.position;
-        hit.transform.position = transform.position;
-        Vector3 lookDirection = (Playerpos.transform.position - transform.position).normalized;
-
+        if(isAlive = true)
+        {
+            agent.destination = Playerpos.position;
+            hit.transform.position = transform.position;
+            Vector3 lookDirection = (Playerpos.transform.position - transform.position).normalized;
+        }
+        
         if(health < 0f)
         {
-            rb.constraints = RigidbodyConstraints.None;
+            Destroy(gameObject);
         }
+
+        if(health < 10f)
+        {
+            damaged.gameObject.SetActive(true);
+            Normal.gameObject.SetActive(false);
+        }
+        
+        health = Mathf.Clamp(health, 0, 20);
     }
     void OnTriggerEnter(Collider other)
     {
@@ -37,4 +51,5 @@ public class EnemyController : MonoBehaviour
             hit.Play();
         }
     }
+
 }
