@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     public PlayerController playercontroller;
     public PistolController pistolController;
     public GameObject Body;
-    public int ammo = 10;
     public TextMeshProUGUI ammoText;
 
     // Start is called before the first frame update
@@ -26,12 +25,11 @@ public class GameManager : MonoBehaviour
         Titletext.gameObject.SetActive(true);
         StartButton.gameObject.SetActive(true);
         Body.GetComponent<LookAtMouse>().enabled = false;
-        UpdateAmmo(ammo);
     }
 
     void Update()
     {
-        float ammoClamp = Mathf.Clamp(ammo, 0f, 10f);
+        
     }
 
     public void StartGame()
@@ -49,11 +47,6 @@ public class GameManager : MonoBehaviour
         gamerOverText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
         Body.GetComponent<LookAtMouse>().enabled = false;
-    }
-
-    public void UpdateAmmo(int AmmoToAdd)
-    {
-        ammoText.text = "Ammo: " + ammo;
     }
 
     public void RestartGame()

@@ -13,7 +13,9 @@ public class PistolController : MonoBehaviour
     public float Bulletspeed = 10f;
     public float Casingspeed = 100f;
     public float timeDestroy = 5f;
-    public float spareAmmo = 150;
+    [SerializedField] private int currentAmmo = 10;
+    [SerializedField] private int maxAmmo = 10;
+    private int minAmmo = 0;
     private bool canShoot = true;
     public GameManager gameManager;
 
@@ -27,7 +29,7 @@ public class PistolController : MonoBehaviour
     void Update()
     {
 
-        if(gameManager.ammo == 0f)
+        if(currentAmmo == 0f)
         {
             canShoot = false;
             PistolAnim.SetBool("Empty", true);
@@ -41,11 +43,9 @@ public class PistolController : MonoBehaviour
             GameObject casing = Instantiate(Casingprefab, CasingPoint.transform.position, Quaternion.identity) as GameObject;
             casing.GetComponent<Rigidbody>().AddForce(Vector3.down * Casingspeed);
             Destroy(casing, 2f);
-            gameManager.ammo -= 1;
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            gameManager.ammo = 10;
             canShoot = true;
             PistolAnim.SetBool("Empty", false);
             PistolAnim.SetBool("Reloading", true);
