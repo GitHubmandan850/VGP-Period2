@@ -13,8 +13,8 @@ public class PistolController : MonoBehaviour
     public float Bulletspeed = 10f;
     public float Casingspeed = 100f;
     public float timeDestroy = 5f;
-    [SerializedField] private int currentAmmo = 10;
-    [SerializedField] private int maxAmmo = 10;
+    private int currentAmmo = 10;
+    private int maxAmmo = 10;
     private int minAmmo = 0;
     private bool canShoot = true;
     public GameManager gameManager;
