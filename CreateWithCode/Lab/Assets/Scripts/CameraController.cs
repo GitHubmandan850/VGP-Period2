@@ -26,5 +26,6 @@ public class CameraController : MonoBehaviour
         transform.localEulerAngles = Vector3.right * cameraVerticalRotation;
 
         player.Rotate(Vector3.up * inputX);
+        player.Rotate(Vector3.left * inputY);
     }
 }

@@ -4,39 +4,58 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Transform player;
 
-    public float speed = 5;
-    private Rigidbody playerRb;
+    public float health = 100;
+    public float speed = 5.0f;
+    public float horizontalInput;
+    public float forwardInput;
+    private float healthCube = 50;
 
+    public bool gameOver;
+    
+    public Camera mainCamera;
+
+    public string inputID; 
+ 
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     void Update()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+    {        
+        horizontalInput = Input.GetAxis("Horizontal" + inputID);
+        forwardInput = Input.GetAxis("Vertical" + inputID);
 
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
-        transform.Translate(Vector3.left * Time.deltaTime * speed * -horizontalInput);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+        transform.Translate(Vector3.left * Time.deltaTime * speed * horizontalInput);
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = 10.0f;
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
-       if(collision.gameObject.CompareTag("Enemy"))
-       {
-            Debug.Log("Rip");
-       }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag("Powerup"))
+        if(other.gameObject.CompareTag("heal"))
         {
             Destroy(other.gameObject);
+            health = health + healthCube;
+        }
+
+        if(other.gameObject.CompareTag("badGuy"))
+        {
+            health = health -= 50;
+        }
+        if(health < 0)
+        {
+            Destroy(player.gameObject);
+            speed = 0;
+            gameOver = true;
         }
     }
 }

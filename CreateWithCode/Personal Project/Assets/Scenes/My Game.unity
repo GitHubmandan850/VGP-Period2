@@ -1733,6 +1733,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 934688769861265792, guid: 8635364646ddeed48b8a2610adcee748, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 934688769882043645, guid: 8635364646ddeed48b8a2610adcee748, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 934688769882043645, guid: 8635364646ddeed48b8a2610adcee748, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934688769882043645, guid: 8635364646ddeed48b8a2610adcee748, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934688769882043645, guid: 8635364646ddeed48b8a2610adcee748, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934688769882043645, guid: 8635364646ddeed48b8a2610adcee748, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8138667339436117632, guid: 8635364646ddeed48b8a2610adcee748, type: 3}
       propertyPath: m_RootOrder
       value: 1
